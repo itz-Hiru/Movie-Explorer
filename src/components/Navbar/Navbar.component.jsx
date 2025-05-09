@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../../utils/firebase";
 
-const Navbar = () => {
+const Navbar = ({ onClick }) => {
   const navLinks = [
     { name: "Home", path: "/" },
     { name: "Products", path: "/" },
@@ -10,14 +12,22 @@ const Navbar = () => {
 
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setIsLoggedIn(!!user);
+    });
+
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
     };
 
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      unsubscribe();
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   return (
@@ -25,12 +35,18 @@ const Navbar = () => {
       className={`fixed top-0 left-0 w-full flex items-center justify-between px-4 md:px-16 lg:px-24 xl:px-32 transition-all duration-500 z-50 ${
         isScrolled
           ? "bg-white/40 shadow-md text-gray-700 backdrop-blur-lg py-3 md:py-4"
-          : "bg-gray-900 py-4 md:py-6 text-white"
+          : "bg-black py-4 md:py-6 text-white"
       }`}
     >
-      <a href="/" className="flex flex-col items-start font-semibold text-xl font-montserrat">
-        <p className="text-primary">Movie</p>
-        <p className="text-white">Explorer</p>
+      <a
+        href="/"
+        className="flex flex-row gap-2 items-start font-semibold text-xl font-montserrat"
+      >
+        <p className="font-playwrite text-5xl text-primary">M</p>
+        <div className="flex flex-col">
+          <p className="text-primary">Movie</p>
+          <p className="text-white">Explorer</p>
+        </div>
       </a>
 
       <div className="hidden md:flex items-center gap-4 lg:gap-8">
@@ -52,21 +68,26 @@ const Navbar = () => {
         ))}
       </div>
 
-      <div className="hidden md:flex items-center gap-4">
-        <svg
-          className={`h-6 w-6 ${isScrolled ? "invert" : ""}`}
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          viewBox="0 0 24 24"
-        >
-          <circle cx="11" cy="11" r="8" />
-          <line x1="21" y1="21" x2="16.65" y2="16.65" />
-        </svg>
-        <button className="bg-primary text-white hover:bg-accent px-8 py-2.5 rounded-full ml-4 transition-all duration-500 cursor-pointer">
-          Login
-        </button>
-      </div>
+      {!isLoggedIn && (
+        <div className="hidden md:flex items-center gap-4">
+          <svg
+            className={`h-6 w-6 ${isScrolled ? "invert" : ""}`}
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            viewBox="0 0 24 24"
+          >
+            <circle cx="11" cy="11" r="8" />
+            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+          </svg>
+          <button
+            className="bg-primary text-white hover:bg-accent px-8 py-2.5 rounded-full ml-4 transition-all duration-500 cursor-pointer"
+            onClick={onClick}
+          >
+            Login
+          </button>
+        </div>
+      )}
 
       <div className="flex items-center gap-3 md:hidden">
         <svg
@@ -84,7 +105,7 @@ const Navbar = () => {
       </div>
 
       <div
-        className={`fixed top-0 left-0 w-3/4 h-screen bg-gray-900 text-base flex flex-col md:hidden items-center justify-center gap-6 font-medium text-white transition-all duration-500 ${
+        className={`fixed top-0 left-0 w-3/4 h-screen bg-black text-base flex flex-col md:hidden items-center justify-center gap-6 font-medium text-white transition-all duration-500 ${
           isMenuOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
@@ -110,9 +131,14 @@ const Navbar = () => {
           </a>
         ))}
 
-        <button className="bg-primary text-white px-8 py-2.5 rounded-full transition-all duration-500 cursor-pointer">
-          Login
-        </button>
+        {!isLoggedIn && (
+          <button
+            className="bg-primary text-white px-8 py-2.5 rounded-full transition-all duration-500 cursor-pointer"
+            onClick={onClick}
+          >
+            Login
+          </button>
+        )}
       </div>
     </nav>
   );

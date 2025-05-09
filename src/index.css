@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playwrite+DK+Loopet:wght@100..400&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 @import "tailwindcss";
 
 * {
@@ -6,10 +6,46 @@
 }
 
 @theme {
-    --color-primary: #00E5FF;
-    --color-accent: #00FFFF;
+    --color-black: #151515;
+    --color-white: #FEFEFE;
+    --color-primary: #00F5A0;
+    --color-accent: #00E0C6;
 }
 
 .font-montserrat {
     font-family: "Montserrat", sans-serif;
+}
+
+.font-playwrite {
+    font-family: "Playwrite DK Loopet", cursive;
+}
+
+.input-box {
+    @apply w-full flex justify-between gap-3 text-sm text-white bg-white/20 rounded px-4 py-3 mb-4 mt-3 border border-white/50 outline-none focus-within:border-primary;
+}
+
+.fade-in {
+  animation: fadeIn 300ms ease-in-out;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.fade-out {
+  animation: fadeOut 300ms ease-in-out;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
