@@ -5,7 +5,7 @@ import ProfileCard from "../Cards/ProfileCard.component";
 
 const Navbar = ({ onClick }) => {
   const navLinks = [
-    { name: "Home", path: "#hero" },
+    { name: "Home", path: "hero" },
     { name: "About", path: "/" },
     { name: "Top Charts", path: "/" },
     { name: "Testimonials", path: "/" },
@@ -36,7 +36,7 @@ const Navbar = ({ onClick }) => {
       className={`fixed top-0 left-0 w-full flex items-center justify-between px-4 md:px-16 lg:px-24 xl:px-32 transition-all duration-500 z-50 ${
         isScrolled
           ? "bg-[#151515] shadow-md text-white backdrop-blur-lg py-3 md:py-4"
-          : "bg-black py-4 md:py-6 text-white"
+          : "bg-black md:bg-transparent py-4 md:py-6 text-white"
       }`}
     >
       <a
