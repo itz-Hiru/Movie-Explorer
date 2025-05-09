@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import "tailwindcss";
+
+* {
+    font-family: "Roboto", sans-serif;
+    background-color: #181818;
+    color: #E0E0E0;
+}
+
+@theme {
+    --color-primary: #121212;
+    --color-secondary: #FF0266;
+    --color-tritary: #00E5FF
+}
