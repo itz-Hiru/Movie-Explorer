@@ -1,7 +1,7 @@
 const Hero = ({ onClick }) => {
   return (
     <section
-      className="relative flex flex-col items-center md:items-start justify-center md:min-h-[80vh] mt-10 md:mt-0 px-4 overflow-hidden z-10"
+      className="relative flex flex-col items-center md:items-start justify-center min-h-[80vh] mt-10 md:mt-0 px-4 overflow-hidden z-10"
       id="hero"
     >
       <div className="hidden md:flex flex-row items-center justify-center gap-2 md:gap-3 max-w-lg mb-5 w-full">
