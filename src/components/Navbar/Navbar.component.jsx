@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../../utils/firebase";
+import ProfileCard from "../Cards/ProfileCard.component";
 
 const Navbar = ({ onClick }) => {
   const navLinks = [
@@ -67,27 +68,20 @@ const Navbar = ({ onClick }) => {
           </a>
         ))}
       </div>
-
-      {!isLoggedIn && (
-        <div className="hidden md:flex items-center gap-4">
-          <svg
-            className={`h-6 w-6 ${isScrolled ? "invert" : ""}`}
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            viewBox="0 0 24 24"
-          >
-            <circle cx="11" cy="11" r="8" />
-            <line x1="21" y1="21" x2="16.65" y2="16.65" />
-          </svg>
+      <div className="hidden md:flex items-center gap-4">
+        {isLoggedIn ? (
+          <div className="">
+            <ProfileCard />
+          </div>
+        ) : (
           <button
             className="bg-primary text-white hover:bg-accent px-8 py-2.5 rounded-full ml-4 transition-all duration-500 cursor-pointer"
             onClick={onClick}
           >
             Login
           </button>
-        </div>
-      )}
+        )}
+      </div>
 
       <div className="flex items-center gap-3 md:hidden">
         <svg
@@ -125,20 +119,26 @@ const Navbar = ({ onClick }) => {
           </svg>
         </button>
 
+        <div className="mb-5">
+          {isLoggedIn ? (
+            <div className="">
+              <ProfileCard />
+            </div>
+          ) : (
+            <button
+              className="bg-primary text-white hover:bg-accent px-8 py-2.5 rounded-full ml-4 transition-all duration-500 cursor-pointer"
+              onClick={onClick}
+            >
+              Login
+            </button>
+          )}
+        </div>
+
         {navLinks.map((link, i) => (
           <a key={i} href={link.path} onClick={() => setIsMenuOpen(false)}>
             {link.name}
           </a>
         ))}
-
-        {!isLoggedIn && (
-          <button
-            className="bg-primary text-white px-8 py-2.5 rounded-full transition-all duration-500 cursor-pointer"
-            onClick={onClick}
-          >
-            Login
-          </button>
-        )}
       </div>
     </nav>
   );

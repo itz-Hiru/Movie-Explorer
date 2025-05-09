@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
+  updateProfile,
 } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../../utils/firebase";
@@ -13,6 +14,7 @@ import { CSSTransition } from "react-transition-group";
 const SignUp = ({ setCurrentPage, closeModal }) => {
   const navigate = useNavigate();
 
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -36,6 +38,11 @@ const SignUp = ({ setCurrentPage, closeModal }) => {
   const handleSignUp = async (e) => {
     e.preventDefault();
 
+    if (!name.trim()) {
+      toast.error("Please enter your name");
+      return;
+    }
+
     if (!validateEmail(email)) {
       toast.error("Please enter a valid email address.");
       return;
@@ -58,10 +65,15 @@ const SignUp = ({ setCurrentPage, closeModal }) => {
         password
       );
       const user = userCredential.user;
-      const token = await user.getIdToken();
 
+      await updateProfile(user, { displayName: name });
+
+      const token = await user.getIdToken();
       localStorage.setItem("authToken", token);
-      toast.success("Account created successfully!");
+
+      toast.success(
+        `Welcome, ${name}! Your account has been created successfully.`
+      );
       closeModal();
       setIsModalVisible(false);
       navigate("/");
@@ -94,6 +106,13 @@ const SignUp = ({ setCurrentPage, closeModal }) => {
           Create your account and dive into a universe of endless entertainment.
         </p>
         <form onSubmit={handleSignUp} className="flex flex-col gap-2">
+          <Input
+            type="text"
+            label="Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Enter your name"
+          />
           <Input
             type="email"
             label="Email"
