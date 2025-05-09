@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../../utils/firebase";
 import ProfileCard from "../Cards/ProfileCard.component";
 
 const Navbar = ({ onClick }) => {
   const navLinks = [
-    { name: "Home", path: "/" },
-    { name: "Products", path: "/" },
-    { name: "Contact", path: "/" },
+    { name: "Home", path: "#hero" },
     { name: "About", path: "/" },
+    { name: "Top Charts", path: "/" },
+    { name: "Testimonials", path: "/" },
   ];
 
   const [isScrolled, setIsScrolled] = useState(false);
@@ -35,7 +35,7 @@ const Navbar = ({ onClick }) => {
     <nav
       className={`fixed top-0 left-0 w-full flex items-center justify-between px-4 md:px-16 lg:px-24 xl:px-32 transition-all duration-500 z-50 ${
         isScrolled
-          ? "bg-white/40 shadow-md text-gray-700 backdrop-blur-lg py-3 md:py-4"
+          ? "bg-[#151515] shadow-md text-white backdrop-blur-lg py-3 md:py-4"
           : "bg-black py-4 md:py-6 text-white"
       }`}
     >
@@ -99,7 +99,7 @@ const Navbar = ({ onClick }) => {
       </div>
 
       <div
-        className={`fixed top-0 left-0 w-3/4 h-screen bg-black text-base flex flex-col md:hidden items-center justify-center gap-6 font-medium text-white transition-all duration-500 ${
+        className={`fixed top-0 left-0 w-3/4 h-screen bg-[#151515] text-base flex flex-col md:hidden items-center justify-center gap-6 font-medium text-white transition-all duration-500 ${
           isMenuOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >

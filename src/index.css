@@ -2,26 +2,27 @@
 @import "tailwindcss";
 
 * {
-    font-family: "Roboto", sans-serif;
+  font-family: "Roboto", sans-serif;
+  scroll-behavior: smooth;
 }
 
 @theme {
-    --color-black: #151515;
-    --color-white: #FEFEFE;
-    --color-primary: #00F5A0;
-    --color-accent: #00E0C6;
+  --color-black: #000000;
+  --color-white: #FEFEFE;
+  --color-primary: #00F5A0;
+  --color-accent: #00E0C6;
 }
 
 .font-montserrat {
-    font-family: "Montserrat", sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .font-playwrite {
-    font-family: "Playwrite DK Loopet", cursive;
+  font-family: "Playwrite DK Loopet", cursive;
 }
 
 .input-box {
-    @apply w-full flex justify-between gap-3 text-sm text-white bg-white/20 rounded px-4 py-3 mb-4 mt-3 border border-white/50 outline-none focus-within:border-primary;
+  @apply w-full flex justify-between gap-3 text-sm text-white bg-white/20 rounded px-4 py-3 mb-4 mt-3 border border-white/50 outline-none focus-within:border-primary;
 }
 
 .fade-in {
@@ -32,6 +33,7 @@
   0% {
     opacity: 0;
   }
+
   100% {
     opacity: 1;
   }
@@ -45,7 +47,22 @@
   0% {
     opacity: 1;
   }
+
   100% {
     opacity: 0;
   }
+}
+
+@keyframes text-shine {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-text-shine {
+  animation: text-shine 3s ease-in-out infinite alternate;
 }
