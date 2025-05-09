@@ -3,12 +3,13 @@
 
 * {
     font-family: "Roboto", sans-serif;
-    background-color: #181818;
-    color: #E0E0E0;
 }
 
 @theme {
-    --color-primary: #121212;
-    --color-secondary: #FF0266;
-    --color-tritary: #00E5FF
+    --color-primary: #00E5FF;
+    --color-accent: #00FFFF;
+}
+
+.font-montserrat {
+    font-family: "Montserrat", sans-serif;
 }
