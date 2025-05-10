@@ -82,7 +82,7 @@ const Testimonials = () => {
             <img
               src={card.image}
               alt=""
-              className="w-24 h-24 rounded-full border-2 border-accent shadow-md shadow-black/50"
+              className="w-24 h-24 rounded-full border-2 border-accent shadow-md shadow-black/50 mx-auto md:mx-0"
             />
             <div className="flex flex-col items-center md:items-start gap-2">
               <h4 className="text-white text-2xl font-bold">{card.name}</h4>
