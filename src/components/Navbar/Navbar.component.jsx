@@ -5,8 +5,8 @@ import ProfileCard from "../Cards/ProfileCard.component";
 
 const Navbar = ({ onClick }) => {
   const navLinks = [
-    { name: "Home", path: "hero" },
-    { name: "About", path: "/" },
+    { name: "Home", path: "#" },
+    { name: "About", path: "#about" },
     { name: "Top Charts", path: "/" },
     { name: "Testimonials", path: "/" },
   ];
@@ -35,7 +35,7 @@ const Navbar = ({ onClick }) => {
     <nav
       className={`fixed top-0 left-0 w-full flex items-center justify-between px-4 md:px-16 lg:px-24 xl:px-32 transition-all duration-500 z-50 ${
         isScrolled
-          ? "bg-[#151515] shadow-md text-white backdrop-blur-lg py-3 md:py-4"
+          ? "bg-[#151515AA] shadow-md text-white backdrop-blur-lg py-3 md:py-4"
           : "bg-transparent py-4 md:py-6 text-white"
       }`}
     >
@@ -82,9 +82,9 @@ const Navbar = ({ onClick }) => {
       <div className="flex items-center gap-3 md:hidden">
         <svg
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className={`h-6 w-6 cursor-pointer ${isScrolled ? "invert" : ""}`}
+          className={`h-6 w-6 cursor-pointer`}
           fill="none"
-          stroke="currentColor"
+          stroke="#FFF"
           strokeWidth="2"
           viewBox="0 0 24 24"
         >
@@ -95,7 +95,7 @@ const Navbar = ({ onClick }) => {
       </div>
 
       <div
-        className={`fixed top-0 left-0 w-3/4 h-screen bg-[#151515] text-base flex flex-col md:hidden items-center justify-center gap-6 font-medium text-white transition-all duration-500 ${
+        className={`fixed top-0 left-0 w-3/4 h-screen bg-[#151515AA] text-base flex flex-col md:hidden items-center justify-center gap-6 font-medium text-white transition-all duration-500 ${
           isMenuOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >

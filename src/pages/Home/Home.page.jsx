@@ -9,6 +9,7 @@ import Hero from "../../sections/Hero.section";
 import HERO_IMAGE from "../../assets/hero_image.jpg";
 import MOBILE_HERO_IMAGE from "../../assets/mobile_hero_image.jpg";
 import { useNavigate } from "react-router-dom";
+import About from "../../sections/About.section";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -44,17 +45,18 @@ const Home = () => {
       <img
         src={HERO_IMAGE}
         alt=""
-        className="absolute top-0 left-0 w-full h-full object-cover z-0 hidden md:block"
+        className="absolute top-0 left-0 w-full h-[100vh] object-cover z-0 hidden md:block"
       />
       <div className="absolute inset-0 bg-black/75 z-5 hidden md:block"></div>
       <img
         src={MOBILE_HERO_IMAGE}
         alt=""
-        className="absolute top-0 left-0 w-full h-full object-cover z-0 md:hidden"
+        className="absolute top-0 left-0 w-full h-[100vh] object-cover z-0 md:hidden"
       />
       <div className="absolute inset-0 bg-black/85 z-5 md:hidden"></div>
       <div className="container mx-auto">
         <Hero onClick={handleLogin} />
+        <About />
       </div>
       <Modal
         isOpen={openAuthModal}
