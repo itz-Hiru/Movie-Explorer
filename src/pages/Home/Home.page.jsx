@@ -11,6 +11,7 @@ import MOBILE_HERO_IMAGE from "../../assets/mobile_hero_image.jpg";
 import { useNavigate } from "react-router-dom";
 import About from "../../sections/About.section";
 import TopCharts from "../../sections/TopCharts.section";
+import Testimonials from "../../sections/Testimonials.section";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -59,6 +60,7 @@ const Home = () => {
         <Hero onClick={handleLogin} />
         <About />
         <TopCharts onClick={handleLogin} />
+        <Testimonials />
       </div>
       <Modal
         isOpen={openAuthModal}
