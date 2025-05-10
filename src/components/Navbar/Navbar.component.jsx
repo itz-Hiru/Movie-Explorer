@@ -2,15 +2,9 @@ import { useEffect, useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../../utils/firebase";
 import ProfileCard from "../Cards/ProfileCard.component";
+import { navLinks } from "../../utils/data";
 
 const Navbar = ({ onClick }) => {
-  const navLinks = [
-    { name: "Home", path: "#" },
-    { name: "About", path: "#about" },
-    { name: "Top Charts", path: "#top-charts" },
-    { name: "Testimonials", path: "#testimonials" },
-  ];
-
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);

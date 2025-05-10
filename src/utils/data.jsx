@@ -3,13 +3,20 @@ import { RiMovie2Line } from "react-icons/ri";
 import { MdUpdate, MdHighQuality } from "react-icons/md";
 import { BiCollection } from "react-icons/bi";
 import { TbDeviceTv } from "react-icons/tb";
-import TESTIMONIAL_IMAGE_ONE from "../assets/testimonial-01.jpg"
-import TESTIMONIAL_IMAGE_TWO from "../assets/testimonial-02.jpg"
-import TESTIMONIAL_IMAGE_THREE from "../assets/testimonial-03.jpg"
-import TESTIMONIAL_IMAGE_FOUR from "../assets/testimonial-04.jpg"
-import TESTIMONIAL_IMAGE_FIVE from "../assets/testimonial-05.jpg"
-import TESTIMONIAL_IMAGE_SIX from "../assets/testimonial-06.jpg"
-import { image } from "framer-motion/client";
+import TESTIMONIAL_IMAGE_ONE from "../assets/testimonial-01.jpg";
+import TESTIMONIAL_IMAGE_TWO from "../assets/testimonial-02.jpg";
+import TESTIMONIAL_IMAGE_THREE from "../assets/testimonial-03.jpg";
+import TESTIMONIAL_IMAGE_FOUR from "../assets/testimonial-04.jpg";
+import TESTIMONIAL_IMAGE_FIVE from "../assets/testimonial-05.jpg";
+import TESTIMONIAL_IMAGE_SIX from "../assets/testimonial-06.jpg";
+
+export const navLinks = [
+  { name: "Home", path: "#" },
+  { name: "About", path: "#about" },
+  { name: "Top Charts", path: "#top-charts" },
+  { name: "Testimonials", path: "#testimonials" },
+  { name: "Contact", path: "#contact" },
+];
 
 export const aboutCards = [
   {

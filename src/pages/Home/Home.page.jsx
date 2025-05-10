@@ -8,10 +8,12 @@ import Login from "../Authentication/Login.page";
 import Hero from "../../sections/Hero.section";
 import HERO_IMAGE from "../../assets/hero_image.jpg";
 import MOBILE_HERO_IMAGE from "../../assets/mobile_hero_image.jpg";
+import CONTACT_IMAGE from "../../assets/contact-image.jpg";
 import { useNavigate } from "react-router-dom";
 import About from "../../sections/About.section";
 import TopCharts from "../../sections/TopCharts.section";
 import Testimonials from "../../sections/Testimonials.section";
+import Contact from "../../sections/Contact.section";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -61,6 +63,7 @@ const Home = () => {
         <About />
         <TopCharts onClick={handleLogin} />
         <Testimonials />
+        <Contact />
       </div>
       <Modal
         isOpen={openAuthModal}
