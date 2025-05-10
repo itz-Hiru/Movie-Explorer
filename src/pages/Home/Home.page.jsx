@@ -10,6 +10,7 @@ import HERO_IMAGE from "../../assets/hero_image.jpg";
 import MOBILE_HERO_IMAGE from "../../assets/mobile_hero_image.jpg";
 import { useNavigate } from "react-router-dom";
 import About from "../../sections/About.section";
+import TopCharts from "../../sections/TopCharts.section";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -57,6 +58,7 @@ const Home = () => {
       <div className="container mx-auto">
         <Hero onClick={handleLogin} />
         <About />
+        <TopCharts onClick={handleLogin} />
       </div>
       <Modal
         isOpen={openAuthModal}

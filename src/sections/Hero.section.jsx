@@ -21,7 +21,7 @@ const Hero = ({ onClick }) => {
       </p>
       <div className="flex flex-col md:flex-row gap-5">
         <a 
-          href="top-chart"
+          href="#top-charts"
           className="bg-transparent text-primary hover:bg-accent hover:text-white px-14 py-3 border border-accent rounded-md transition-colors duration-500 cursor-pointer"
         >Top Charts</a>
         <button 

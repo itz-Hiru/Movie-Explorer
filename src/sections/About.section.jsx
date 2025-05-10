@@ -57,7 +57,7 @@ const About = () => {
           animate={isMediumOrLarger && inView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.8 }}
         >
-          Best Features That Won't Disappoint
+          Best Features That Won't <span className="text-primary">Disappoint</span> 
         </motion.h2>
 
         <motion.p

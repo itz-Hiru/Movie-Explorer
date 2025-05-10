@@ -7,7 +7,7 @@ const Navbar = ({ onClick }) => {
   const navLinks = [
     { name: "Home", path: "#" },
     { name: "About", path: "#about" },
-    { name: "Top Charts", path: "/" },
+    { name: "Top Charts", path: "#top-charts" },
     { name: "Testimonials", path: "/" },
   ];
 
