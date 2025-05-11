@@ -1,7 +1,9 @@
-import React from "react";
 import { Toaster } from "react-hot-toast";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home/Home.page";
+import Dashboard from "./pages/Dashboard/Dashboard.page";
+import Favourites from "./pages/Dashboard/Favourites.page";
+import Profile from "./pages/Dashboard/Profile.page";
 
 const App = () => {
   return (
@@ -9,6 +11,9 @@ const App = () => {
       <div>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/favourites" element={<Favourites />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
       </div>
       <Toaster
