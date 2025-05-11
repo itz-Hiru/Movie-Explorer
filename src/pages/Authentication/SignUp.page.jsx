@@ -5,7 +5,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import { auth } from "../../utils/firebase";
+import { auth, createUserDocument } from "../../utils/firebase";
 import { validateEmail } from "../../utils/helper";
 import Input from "../../components/Inputs/Input.component";
 import { toast } from "react-hot-toast";
@@ -70,6 +70,7 @@ const SignUp = ({ setCurrentPage, closeModal }) => {
 
       const token = await user.getIdToken();
       localStorage.setItem("authToken", token);
+      createUserDocument(auth.currentUser);
 
       toast.success(
         `Welcome, ${name}! Your account has been created successfully.`

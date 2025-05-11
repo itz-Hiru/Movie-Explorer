@@ -1,6 +1,6 @@
 import React from "react";
 
-const Input = ({ label, type, placeholder, value, onChange }) => {
+const Input = ({ label, type, placeholder, value, onChange, readOnly }) => {
   return (
     <div>
       <label className="text-[13px] text-white">{label}</label>
@@ -11,6 +11,7 @@ const Input = ({ label, type, placeholder, value, onChange }) => {
           className="w-full bg-transparent outline-none text-[13px]"
           value={value}
           onChange={(e) => onChange(e)}
+          readOnly={readOnly}
         />
       </div>
     </div>
