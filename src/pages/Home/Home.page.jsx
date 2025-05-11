@@ -14,6 +14,7 @@ import About from "../../sections/About.section";
 import TopCharts from "../../sections/TopCharts.section";
 import Testimonials from "../../sections/Testimonials.section";
 import Contact from "../../sections/Contact.section";
+import Footer from "../../components/Footer/Footer.component";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -65,6 +66,7 @@ const Home = () => {
         <Testimonials />
         <Contact />
       </div>
+      <Footer />
       <Modal
         isOpen={openAuthModal}
         onClose={() => {
