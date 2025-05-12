@@ -57,7 +57,11 @@ const MovieDetail = () => {
       const user = auth.currentUser;
 
       if (user && movie.id) {
-        const movieDocRef = doc(db, `favorites/${user.uid}/movies`, movie.id.toString());
+        const movieDocRef = doc(
+          db,
+          `favorites/${user.uid}/movies`,
+          movie.id.toString()
+        );
         const docSnapshot = await getDoc(movieDocRef);
         if (docSnapshot.exists()) {
           setIsFavorite(true);
@@ -68,7 +72,9 @@ const MovieDetail = () => {
     const fetchTrailer = async () => {
       try {
         const response = await fetch(
-          `https://api.themoviedb.org/3/movie/${movie.id}/videos?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=en-US`
+          `https://api.themoviedb.org/3/movie/${movie.id}/videos?api_key=${
+            import.meta.env.VITE_TMDB_API_KEY
+          }&language=en-US`
         );
         const data = await response.json();
         const trailer = data.results.find(
@@ -109,15 +115,19 @@ const MovieDetail = () => {
               className="w-full h-[500px] md:h-[auto] md:w-[400px] rounded-xl shadow-md shadow-white/10"
             />
             <div className="flex-1">
-              <div className="flex justify-between">
-                <h1 className="text-white text-3xl md:text-4xl lg:text-6xl font-semibold mb-5 font-montserrat">
+              <div className="flex justify-between items-center">
+                <h1 className="text-white text-3xl md:text-4xl lg:text-6xl font-semibold font-montserrat">
                   {movie.title}
                 </h1>
                 <button
                   onClick={handleAddToFavorites}
                   className="text-4xl text-white cursor-pointer transition-colors duration-500"
                 >
-                  {isFavorite ? <FaHeart className="text-primary" /> : <FaHeart className="" />}
+                  {isFavorite ? (
+                    <FaHeart className="text-primary" />
+                  ) : (
+                    <FaHeart className="" />
+                  )}
                 </button>
               </div>
               <p className="text-white/80 font-medium md:text-lg mb-4">

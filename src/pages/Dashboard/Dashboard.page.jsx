@@ -6,7 +6,7 @@ import Input from "../../components/Inputs/Input.component";
 import Select from "../../components/Inputs/Select.component";
 
 const Dashboard = () => {
-  const { topCharts, fetchTopCharts } = useContext(MovieContext);
+  const { allMovies, fetchAllMovies } = useContext(MovieContext);
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredMovies, setFilteredMovies] = useState([]);
   const [selectedYear, setSelectedYear] = useState("");
@@ -15,11 +15,11 @@ const Dashboard = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetchTopCharts();
-  }, [fetchTopCharts]);
+    fetchAllMovies();
+  }, [fetchAllMovies]);
 
   useEffect(() => {
-    let filtered = topCharts;
+    let filtered = allMovies;
     if (searchTerm) {
       filtered = filtered.filter((movie) =>
         movie.title.toLowerCase().includes(searchTerm.toLowerCase())
@@ -42,7 +42,7 @@ const Dashboard = () => {
       );
     }
     setFilteredMovies(filtered);
-  }, [topCharts, searchTerm, selectedYear, selectedGenre, selectedRating]);
+  }, [allMovies, searchTerm, selectedYear, selectedGenre, selectedRating]);
 
   const handleCardClick = (movie) => {
     const path = `/film/${movie.title.replace(/\s+/g, "-").toLowerCase()}`;
@@ -67,7 +67,7 @@ const Dashboard = () => {
                 { value: "", label: "All Years" },
                 ...Array.from(
                   new Set(
-                    topCharts.map((movie) =>
+                    allMovies.map((movie) =>
                       new Date(movie.release_date).getFullYear()
                     )
                   )
@@ -111,11 +111,13 @@ const Dashboard = () => {
               onClick={() => handleCardClick(movie)}
               className="group bg-[#1C1C1C] text-white p-4 rounded-lg shadow-md shadow-white/10 border border-transparent hover:shadow-accent/10 hover:border-primary cursor-pointer"
             >
-              <img
-                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                alt={movie.title}
-                className="w-full h-auto rounded-lg transition-transform duration-500 transform group-hover:scale-105 mb-4"
-              />
+              <div className="relative overflow-hidden rounded-lg mb-4">
+                <img
+                  src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                  alt={movie.title}
+                  className="w-full h-auto rounded-lg transition-transform duration-500 transform group-hover:scale-105"
+                />
+              </div>
               <h3 className="text-lg font-semibold">{movie.title}</h3>
               <p className="text-amber-400">Rating: {movie.vote_average}</p>
               <p className="text-white/80">
