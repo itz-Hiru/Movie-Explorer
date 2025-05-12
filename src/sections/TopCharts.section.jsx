@@ -1,7 +1,10 @@
 import { useEffect, useContext, useState, useRef } from "react";
+import { getAuth } from "firebase/auth";
 import { motion } from "framer-motion";
 import { MovieContext } from "../context/MovieContext.context";
 import { FaArrowRight } from "react-icons/fa6";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const useMediaQuery = (query) => {
   const [matches, setMatches] = useState(false);
@@ -23,8 +26,8 @@ const TopCharts = ({ onClick }) => {
   const sectionRef = useRef(null);
   const [inView, setInView] = useState(false);
   const isMediumOrLarger = useMediaQuery("(min-width: 768px)");
+  const navigate = useNavigate();
 
-  // Fetch Top Charts
   useEffect(() => {
     const loadTopCharts = async () => {
       try {
@@ -38,7 +41,19 @@ const TopCharts = ({ onClick }) => {
     loadTopCharts();
   }, [fetchTopCharts]);
 
-  // Intersection Observer
+  const handleCardClick = (movie) => {
+    const auth = getAuth();
+    const user = auth.currentUser;
+
+    if (!user) {
+      toast.error("Please login first to view more");
+      return;
+    }
+
+    const path = `/film/${movie.title.replace(/\s+/g, "-").toLowerCase()}`;
+    navigate(path, { state: { movie } });
+  };
+
   useEffect(() => {
     if (!isMediumOrLarger || !sectionRef.current) return;
 
@@ -94,6 +109,7 @@ const TopCharts = ({ onClick }) => {
         {topCharts.slice(0, 8).map((movie) => (
           <motion.div
             key={movie.id}
+            onClick={() => handleCardClick(movie)}
             className="bg-[#151515] p-5 flex flex-col rounded-lg shadow-md shadow-[#000000]/50 hover:shadow-sm hover:shadow-accent transition-shadow duration-300 cursor-pointer group"
             initial={isMediumOrLarger ? { opacity: 0, y: 20 } : {}}
             animate={isMediumOrLarger && inView ? { opacity: 1, y: 0 } : {}}

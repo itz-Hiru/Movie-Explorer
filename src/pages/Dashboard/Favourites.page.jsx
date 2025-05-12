@@ -9,8 +9,6 @@ import {
   getFirestore,
   collection,
   getDocs,
-  query,
-  where,
 } from "firebase/firestore";
 
 const Favourites = () => {
