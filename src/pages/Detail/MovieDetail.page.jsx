@@ -116,12 +116,12 @@ const MovieDetail = () => {
             />
             <div className="flex-1">
               <div className="flex justify-between items-center">
-                <h1 className="text-[#FFFFFF] text-3xl md:text-4xl lg:text-6xl font-semibold font-montserrat">
+                <h1 className="text-white md:text[#FFFFFF] text-3xl md:text-4xl lg:text-6xl font-semibold font-montserrat">
                   {movie.title}
                 </h1>
                 <button
                   onClick={handleAddToFavorites}
-                  className="text-4xl text-[#FFFFFF] cursor-pointer transition-colors duration-500"
+                  className="text-white md:text[#FFFFFF] cursor-pointer transition-colors duration-500"
                 >
                   {isFavorite ? (
                     <FaHeart className="text-primary" />
@@ -130,14 +130,14 @@ const MovieDetail = () => {
                   )}
                 </button>
               </div>
-              <p className="text-[#FEFEFECC] font-medium md:text-lg mb-4">
+              <p className="text-white/80 md:text[#FFFFFFCC] font-medium md:text-lg mb-4">
                 {movie.overview}
               </p>
               <div className="flex justify-between mb-5">
                 <p className="text-amber-400">
                   Rating: {movie.vote_average} / 10
                 </p>
-                <p className="text-[#FEFEFECC]">
+                <p className="text-white/80 md:text[#FFFFFFCC]">
                   Released: {new Date(movie.release_date).getFullYear()}
                 </p>
               </div>
