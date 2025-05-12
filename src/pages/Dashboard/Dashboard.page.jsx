@@ -1,4 +1,5 @@
-import React, { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import DashboardLayout from "../../components/Layouts/DashboardLayout.component";
 import { MovieContext } from "../../context/MovieContext.context";
 import Input from "../../components/Inputs/Input.component";
@@ -11,6 +12,7 @@ const Dashboard = () => {
   const [selectedYear, setSelectedYear] = useState("");
   const [selectedGenre, setSelectedGenre] = useState("");
   const [selectedRating, setSelectedRating] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchTopCharts();
@@ -42,10 +44,15 @@ const Dashboard = () => {
     setFilteredMovies(filtered);
   }, [topCharts, searchTerm, selectedYear, selectedGenre, selectedRating]);
 
+  const handleCardClick = (movie) => {
+    const path = `/film/${movie.title.replace(/\s+/g, "-").toLowerCase()}`;
+    navigate(path, { state: { movie } });
+  };
+
   return (
     <DashboardLayout activeMenu="Dashboard">
       <div className="px-0 md:px-5 py-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mb-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 items-center mb-5">
           <Input
             placeholder="Search movie..."
             value={searchTerm}
@@ -101,6 +108,7 @@ const Dashboard = () => {
           {filteredMovies.map((movie) => (
             <div
               key={movie.id}
+              onClick={() => handleCardClick(movie)}
               className="group bg-[#1C1C1C] text-white p-4 rounded-lg shadow-md shadow-white/10 border border-transparent hover:shadow-accent/10 hover:border-primary cursor-pointer"
             >
               <img

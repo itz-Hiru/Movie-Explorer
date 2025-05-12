@@ -4,6 +4,7 @@ import Home from "./pages/Home/Home.page";
 import Dashboard from "./pages/Dashboard/Dashboard.page";
 import Favourites from "./pages/Dashboard/Favourites.page";
 import Profile from "./pages/Dashboard/Profile.page";
+import MovieDetail from "./pages/Detail/MovieDetail.page";
 
 const App = () => {
   return (
@@ -11,6 +12,7 @@ const App = () => {
       <div>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/film/:filmname" element={<MovieDetail />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/favourites" element={<Favourites />} />
           <Route path="/profile" element={<Profile />} />

@@ -58,7 +58,7 @@ const Home = () => {
         alt=""
         className="absolute top-0 left-0 w-full h-[100vh] object-cover z-0 md:hidden"
       />
-      <div className="absolute inset-0 bg-black/85 z-5 md:hidden"></div>
+      <div className="absolute inset-0 h-[100vh] bg-black/85 z-5 md:hidden"></div>
       <div className="container mx-auto">
         <Hero onClick={handleLogin} />
         <About />
