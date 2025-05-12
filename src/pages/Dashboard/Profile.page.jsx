@@ -1,19 +1,19 @@
-import { useEffect, useState } from "react";
-import DashboardLayout from "../../components/Layouts/DashboardLayout.component";
-import Input from "../../components/Inputs/Input.component";
-import toast from "react-hot-toast";
-import { FaArrowUpRightFromSquare } from "react-icons/fa6";
 import {
-  auth,
-  updatePassword,
-  updateUserName,
-  getProfileLastUpdated,
-} from "../../utils/firebase";
-import {
-  onAuthStateChanged,
   EmailAuthProvider,
+  onAuthStateChanged,
   reauthenticateWithCredential,
 } from "firebase/auth";
+import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
+import { FaArrowUpRightFromSquare } from "react-icons/fa6";
+import Input from "../../components/Inputs/Input.component";
+import DashboardLayout from "../../components/Layouts/DashboardLayout.component";
+import {
+  auth,
+  getProfileLastUpdated,
+  updatePassword,
+  updateUserName,
+} from "../../utils/firebase";
 
 const Profile = () => {
   const [name, setName] = useState("");

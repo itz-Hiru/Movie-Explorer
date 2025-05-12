@@ -20,15 +20,19 @@ const Hero = ({ onClick }) => {
         into the world of cinema, curated just for you.
       </p>
       <div className="flex flex-col md:flex-row gap-5">
-        <a 
+        <a
           href="#top-charts"
           className="bg-transparent text-primary hover:bg-accent hover:text-white px-14 py-3 border border-accent rounded-md transition-colors duration-500 cursor-pointer"
-        >Top Charts</a>
-        <button 
+        >
+          Top Charts
+        </a>
+        <button
           type="button"
           onClick={onClick}
           className="bg-accent text-white hover:bg-transparent hover:text-primary px-14 py-3 border border-accent rounded-md transition-colors duration-500 cursor-pointer"
-        >Get Started</button>
+        >
+          Get Started
+        </button>
       </div>
     </section>
   );

@@ -1,13 +1,21 @@
-import { useEffect, useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
+import { useEffect, useState } from "react";
+import { LuMoon, LuSun } from "react-icons/lu";
+import { navLinks } from "../../utils/data";
 import { auth } from "../../utils/firebase";
 import ProfileCard from "../Cards/ProfileCard.component";
-import { navLinks } from "../../utils/data";
 
 const Navbar = ({ onClick }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [theme, setTheme] = useState(
+    () =>
+      localStorage.getItem("theme") ||
+      (window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light")
+  );
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -19,17 +27,23 @@ const Navbar = ({ onClick }) => {
     };
 
     window.addEventListener("scroll", handleScroll);
+    document.documentElement.classList.toggle("dark", theme === "dark");
+    localStorage.setItem("theme", theme);
     return () => {
       unsubscribe();
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === "dark" ? "light" : "dark"));
+  };
 
   return (
     <nav
       className={`fixed top-0 left-0 w-full flex items-center justify-between px-4 md:px-16 lg:px-24 xl:px-32 transition-all duration-500 z-50 ${
         isScrolled
-          ? "bg-[#151515AA] shadow-md text-white backdrop-blur-lg py-3 md:py-4"
+          ? "bg-nav-scroll shadow-md text-white backdrop-blur-lg py-3 md:py-4"
           : "bg-transparent py-4 md:py-6 text-white"
       }`}
     >
@@ -49,20 +63,28 @@ const Navbar = ({ onClick }) => {
           <a
             key={i}
             href={link.path}
-            className={`group flex flex-col gap-0.5 text-white`}
+            className="group flex flex-col gap-0.5 text-white"
           >
             {link.name}
-            <div
-              className={`bg-primary h-0.5 w-0 group-hover:w-full transition-all duration-300`}
-            />
+            <div className="bg-primary h-0.5 w-0 group-hover:w-full transition-all duration-300" />
           </a>
         ))}
       </div>
+
+      <button
+        onClick={toggleTheme}
+        className="text-white hover:text-primary p-2 rounded-full transition-all duration-500 cursor-pointer"
+      >
+        {theme === "dark" ? (
+          <LuSun className="text-white" size={24} />
+        ) : (
+          <LuMoon className="text-white" size={24} />
+        )}
+      </button>
+
       <div className="hidden md:flex items-center gap-4">
         {isLoggedIn ? (
-          <div className="">
-            <ProfileCard />
-          </div>
+          <ProfileCard />
         ) : (
           <button
             className="bg-primary text-white hover:bg-accent px-8 py-2.5 rounded-full ml-4 transition-all duration-500 cursor-pointer"
@@ -76,7 +98,7 @@ const Navbar = ({ onClick }) => {
       <div className="flex items-center gap-3 md:hidden">
         <svg
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className={`h-6 w-6 cursor-pointer`}
+          className="h-6 w-6 cursor-pointer"
           fill="none"
           stroke="#FFF"
           strokeWidth="2"
@@ -89,7 +111,7 @@ const Navbar = ({ onClick }) => {
       </div>
 
       <div
-        className={`fixed top-0 left-0 w-3/4 h-screen bg-[#151515AA] text-base flex flex-col md:hidden items-center justify-center gap-6 font-medium text-white transition-all duration-500 ${
+        className={`fixed top-0 left-0 w-3/4 h-screen bg-card text-base flex flex-col md:hidden items-center justify-center gap-6 font-medium text-white transition-all duration-500 ${
           isMenuOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
@@ -111,9 +133,7 @@ const Navbar = ({ onClick }) => {
 
         <div className="mb-5">
           {isLoggedIn ? (
-            <div className="">
-              <ProfileCard />
-            </div>
+            <ProfileCard />
           ) : (
             <button
               className="bg-primary text-white hover:bg-accent px-8 py-2.5 rounded-full ml-4 transition-all duration-500 cursor-pointer"

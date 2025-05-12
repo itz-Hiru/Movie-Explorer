@@ -1,7 +1,9 @@
-import { FaCompass } from "react-icons/fa";
-import { RiMovie2Line } from "react-icons/ri";
-import { MdUpdate, MdHighQuality } from "react-icons/md";
 import { BiCollection } from "react-icons/bi";
+import { FaCompass } from "react-icons/fa";
+import { FaHeart, FaUser } from "react-icons/fa6";
+import { LuLayoutDashboard } from "react-icons/lu";
+import { MdHighQuality, MdUpdate } from "react-icons/md";
+import { RiMovie2Line } from "react-icons/ri";
 import { TbDeviceTv } from "react-icons/tb";
 import TESTIMONIAL_IMAGE_ONE from "../assets/testimonial-01.jpg";
 import TESTIMONIAL_IMAGE_TWO from "../assets/testimonial-02.jpg";
@@ -9,8 +11,6 @@ import TESTIMONIAL_IMAGE_THREE from "../assets/testimonial-03.jpg";
 import TESTIMONIAL_IMAGE_FOUR from "../assets/testimonial-04.jpg";
 import TESTIMONIAL_IMAGE_FIVE from "../assets/testimonial-05.jpg";
 import TESTIMONIAL_IMAGE_SIX from "../assets/testimonial-06.jpg";
-import { LuLayoutDashboard } from "react-icons/lu";
-import { FaHeart, FaUser } from "react-icons/fa6";
 
 export const navLinks = [
   { name: "Home", path: "#" },
@@ -133,18 +133,18 @@ export const sideMenuData = [
     id: "01",
     label: "Dashboard",
     path: "/dashboard",
-    icon: LuLayoutDashboard
+    icon: LuLayoutDashboard,
   },
   {
     id: "02",
     label: "Favourites",
     path: "/favourites",
-    icon: FaHeart
+    icon: FaHeart,
   },
   {
     id: "03",
     label: "Profile",
     path: "/profile",
     icon: FaUser,
-  }
-]
+  },
+];

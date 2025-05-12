@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
-import { FaUser } from "react-icons/fa6";
-import { getAuth, signOut, onAuthStateChanged } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import { FaUser } from "react-icons/fa6";
+import { useNavigate } from "react-router-dom";
 
 const ProfileCard = () => {
   const [userName, setUserName] = useState("");
@@ -26,7 +26,6 @@ const ProfileCard = () => {
       toast.success("Logged Out Successfully");
       navigate("/");
     } catch (error) {
-      console.error("Error logging out:", error);
       toast.error("Failed to log out. Please try again.");
     }
   };

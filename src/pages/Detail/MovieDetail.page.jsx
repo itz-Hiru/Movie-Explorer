@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
-import { doc, setDoc, deleteDoc, getDoc } from "firebase/firestore";
-import { db } from "../../utils/firebase";
-import { toast } from "react-hot-toast";
 import { getAuth } from "firebase/auth";
+import { deleteDoc, doc, getDoc, setDoc } from "firebase/firestore";
+import { useEffect, useState } from "react";
+import { toast } from "react-hot-toast";
 import { FaArrowUpRightFromSquare, FaHeart } from "react-icons/fa6";
+import { useLocation } from "react-router-dom";
+import { db } from "../../utils/firebase";
 
 const MovieDetail = () => {
   const location = useLocation();
@@ -106,7 +106,7 @@ const MovieDetail = () => {
               })`,
             }}
           >
-            <div className="absolute inset-0 h-[400px] bg-black/80 z-10 hidden md:block"></div>
+            <div className="absolute inset-0 h-[400px] bg-[#000000CC] z-10 hidden md:block"></div>
           </div>
           <div className="container mx-auto flex flex-col md:flex-row gap-5 md:gap-8 overflow-hidden z-20 relative pb-0 md:pb-5">
             <img
@@ -116,12 +116,12 @@ const MovieDetail = () => {
             />
             <div className="flex-1">
               <div className="flex justify-between items-center">
-                <h1 className="text-white text-3xl md:text-4xl lg:text-6xl font-semibold font-montserrat">
+                <h1 className="text-[#FFFFFF] text-3xl md:text-4xl lg:text-6xl font-semibold font-montserrat">
                   {movie.title}
                 </h1>
                 <button
                   onClick={handleAddToFavorites}
-                  className="text-4xl text-white cursor-pointer transition-colors duration-500"
+                  className="text-4xl text-[#FFFFFF] cursor-pointer transition-colors duration-500"
                 >
                   {isFavorite ? (
                     <FaHeart className="text-primary" />
@@ -130,14 +130,14 @@ const MovieDetail = () => {
                   )}
                 </button>
               </div>
-              <p className="text-white/80 font-medium md:text-lg mb-4">
+              <p className="text-[#FEFEFECC] font-medium md:text-lg mb-4">
                 {movie.overview}
               </p>
               <div className="flex justify-between mb-5">
                 <p className="text-amber-400">
                   Rating: {movie.vote_average} / 10
                 </p>
-                <p className="text-white/80">
+                <p className="text-[#FEFEFECC]">
                   Released: {new Date(movie.release_date).getFullYear()}
                 </p>
               </div>

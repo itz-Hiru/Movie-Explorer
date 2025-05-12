@@ -1,5 +1,5 @@
-import { useNavigate } from "react-router-dom";
 import { getAuth } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 import { sideMenuData } from "../../utils/data";
 import CharAvatar from "../Cards/CharAvatar.component";
 
@@ -43,7 +43,7 @@ const SideMenu = ({ activeMenu }) => {
           key={index}
           className={`w-full flex items-center gap-4 text-[15px] cursor-pointer transition-colors duration-500 ${
             activeMenu === data.label
-              ? "text-white bg-gradient-to-r from-primary to-accent border-r-4 border-white"
+              ? "text-active-menu bg-gradient-to-r from-primary to-accent border-r-4 border-white"
               : "text-white"
           } py-3 px-6 mb-3`}
           onClick={() => handleClick(data.path)}

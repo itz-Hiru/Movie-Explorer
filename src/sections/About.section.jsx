@@ -1,5 +1,5 @@
-import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 import { aboutCards } from "../utils/data";
 
 const useMediaQuery = (query) => {
@@ -57,7 +57,8 @@ const About = () => {
           animate={isMediumOrLarger && inView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.8 }}
         >
-          Best Features That Won't <span className="text-primary">Disappoint</span> 
+          Best Features That Won't{" "}
+          <span className="text-primary">Disappoint</span>
         </motion.h2>
 
         <motion.p
@@ -75,7 +76,7 @@ const About = () => {
         {aboutCards.map((card, index) => (
           <motion.div
             key={index}
-            className="bg-[#151515] p-5 flex flex-col md:flex-row gap-4 rounded-lg shadow-md shadow-[#000000]/50 hover:shadow-sm hover:shadow-accent transition-shadow duration-300"
+            className="bg-card p-5 flex flex-col md:flex-row gap-4 rounded-lg shadow-md shadow-white/10 hover:shadow-sm hover:shadow-accent transition-shadow duration-300"
             initial={isMediumOrLarger ? { opacity: 0, x: card.initialX } : {}}
             animate={isMediumOrLarger && inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: card.delay }}

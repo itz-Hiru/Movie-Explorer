@@ -1,10 +1,10 @@
-import { useEffect, useContext, useState, useRef } from "react";
 import { getAuth } from "firebase/auth";
 import { motion } from "framer-motion";
-import { MovieContext } from "../context/MovieContext.context";
-import { FaArrowRight } from "react-icons/fa6";
+import { useContext, useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
+import { FaArrowRight } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
+import { MovieContext } from "../context/MovieContext.context";
 
 const useMediaQuery = (query) => {
   const [matches, setMatches] = useState(false);
@@ -110,7 +110,7 @@ const TopCharts = ({ onClick }) => {
           <motion.div
             key={movie.id}
             onClick={() => handleCardClick(movie)}
-            className="bg-[#151515] p-5 flex flex-col rounded-lg shadow-md shadow-[#000000]/50 hover:shadow-sm hover:shadow-accent transition-shadow duration-300 cursor-pointer group"
+            className="bg-card p-5 flex flex-col rounded-lg shadow-md shadow-white/10 hover:shadow-sm hover:shadow-accent transition-shadow duration-300 cursor-pointer group"
             initial={isMediumOrLarger ? { opacity: 0, y: 20 } : {}}
             animate={isMediumOrLarger && inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}

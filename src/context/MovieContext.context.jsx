@@ -1,5 +1,5 @@
-import { createContext, useState, useCallback } from "react";
 import axios from "axios";
+import { createContext, useCallback, useState } from "react";
 
 export const MovieContext = createContext();
 

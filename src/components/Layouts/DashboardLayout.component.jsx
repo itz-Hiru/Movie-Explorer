@@ -1,6 +1,6 @@
+import { getAuth } from "firebase/auth";
 import SideMenu from "../Menus/SideMenu.component";
 import DashboardNavbar from "../Navbar/DashboardNavbar.component";
-import { getAuth } from "firebase/auth";
 
 const DashboardLayout = ({ children, activeMenu }) => {
   const auth = getAuth();

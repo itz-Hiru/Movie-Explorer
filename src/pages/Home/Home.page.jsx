@@ -1,20 +1,19 @@
-import { useEffect, useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "../../utils/firebase";
-import Navbar from "../../components/Navbar/Navbar.component";
-import Modal from "../../components/Modals/Modal.component";
-import SignUp from "../Authentication/SignUp.page";
-import Login from "../Authentication/Login.page";
-import Hero from "../../sections/Hero.section";
-import HERO_IMAGE from "../../assets/hero_image.jpg";
-import MOBILE_HERO_IMAGE from "../../assets/mobile_hero_image.jpg";
-import CONTACT_IMAGE from "../../assets/contact-image.jpg";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import About from "../../sections/About.section";
-import TopCharts from "../../sections/TopCharts.section";
-import Testimonials from "../../sections/Testimonials.section";
-import Contact from "../../sections/Contact.section";
+import HERO_IMAGE from "../../assets/hero_image.png";
+import MOBILE_HERO_IMAGE from "../../assets/hero_mobile_image.png";
 import Footer from "../../components/Footer/Footer.component";
+import Modal from "../../components/Modals/Modal.component";
+import Navbar from "../../components/Navbar/Navbar.component";
+import About from "../../sections/About.section";
+import Contact from "../../sections/Contact.section";
+import Hero from "../../sections/Hero.section";
+import Testimonials from "../../sections/Testimonials.section";
+import TopCharts from "../../sections/TopCharts.section";
+import { auth } from "../../utils/firebase";
+import Login from "../Authentication/Login.page";
+import SignUp from "../Authentication/SignUp.page";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -50,15 +49,15 @@ const Home = () => {
       <img
         src={HERO_IMAGE}
         alt=""
-        className="absolute top-0 left-0 w-full h-[100vh] object-cover z-0 hidden md:block"
+        className="absolute top-0 left-46 h-[100vh] object-cover z-0 hidden md:block"
       />
-      <div className="absolute inset-0 bg-black/75 z-5 hidden md:block"></div>
+      <div className="absolute inset-0 h-[100vh] bg-black/65 z-5 hidden md:block"></div>
       <img
         src={MOBILE_HERO_IMAGE}
         alt=""
         className="absolute top-0 left-0 w-full h-[100vh] object-cover z-0 md:hidden"
       />
-      <div className="absolute inset-0 h-[100vh] bg-black/85 z-5 md:hidden"></div>
+      <div className="absolute inset-0 h-[100vh] bg-black/65 z-5 md:hidden"></div>
       <div className="container mx-auto">
         <Hero onClick={handleLogin} />
         <About />

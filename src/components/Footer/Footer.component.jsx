@@ -1,6 +1,6 @@
+import { getAuth } from "firebase/auth";
+import { addDoc, collection, getFirestore } from "firebase/firestore";
 import { useState } from "react";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { getFirestore, collection, addDoc } from "firebase/firestore";
 import toast from "react-hot-toast";
 import { validateEmail } from "../../utils/helper";
 
@@ -34,7 +34,7 @@ const Footer = () => {
     }
   };
   return (
-    <footer className="px-6 md:px-16 lg:px-24 xl:px-32 pt-8 w-full bg-[#151515]">
+    <footer className="px-6 md:px-16 lg:px-24 xl:px-32 pt-8 w-full bg-card">
       <div className="flex flex-col md:flex-row justify-between w-full gap-10 border-b border-accent/30 pb-6">
         <div className="md:max-w-96">
           <p className="text-white text-3xl font-semibold font-montserrat">

@@ -1,15 +1,11 @@
-import { useEffect, useState, useContext } from "react";
+import { getAuth } from "firebase/auth";
+import { collection, getDocs, getFirestore } from "firebase/firestore";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import DashboardLayout from "../../components/Layouts/DashboardLayout.component";
-import { MovieContext } from "../../context/MovieContext.context";
 import Input from "../../components/Inputs/Input.component";
 import Select from "../../components/Inputs/Select.component";
-import { getAuth } from "firebase/auth";
-import {
-  getFirestore,
-  collection,
-  getDocs,
-} from "firebase/firestore";
+import DashboardLayout from "../../components/Layouts/DashboardLayout.component";
+import { MovieContext } from "../../context/MovieContext.context";
 
 const Favourites = () => {
   const { firebaseApp } = useContext(MovieContext);
@@ -132,7 +128,7 @@ const Favourites = () => {
             <div
               key={movie.id}
               onClick={() => handleCardClick(movie)}
-              className="group bg-[#1C1C1C] text-white p-4 rounded-lg shadow-md shadow-white/10 border border-transparent hover:shadow-accent/10 hover:border-primary cursor-pointer"
+              className="group bg-card text-white p-4 rounded-lg shadow-md shadow-white/10 border border-transparent hover:shadow-accent/10 hover:border-primary cursor-pointer"
             >
               <div className="relative overflow-hidden rounded-lg mb-4">
                 <img

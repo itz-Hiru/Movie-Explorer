@@ -10,8 +10,20 @@
   --color-black: #000000;
   --color-bg-black: #151515;
   --color-white: #FEFEFE;
+  --color-card: #1C1C1C;
+  --color-active-menu: #FEFEFE;
+  --color-nav-scroll: #151515;
   --color-primary: #FA5500;
   --color-accent: #FF3200;
+}
+
+html.dark {
+  --color-black: "#FFFFFF";
+  --color-white: #000000;
+  --color-bg-black: #FAFAFA;
+  --color-card: #EFEFEF;
+  --color-active-menu: #FEFEFE;
+  --color-nav-scroll: #CCCCCCCC;
 }
 
 .font-montserrat {

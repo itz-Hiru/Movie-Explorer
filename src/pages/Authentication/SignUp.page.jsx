@@ -1,15 +1,15 @@
-import { useState, useEffect } from "react";
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
   updateProfile,
 } from "firebase/auth";
+import { useEffect, useState } from "react";
+import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { CSSTransition } from "react-transition-group";
+import Input from "../../components/Inputs/Input.component";
 import { auth, createUserDocument } from "../../utils/firebase";
 import { validateEmail } from "../../utils/helper";
-import Input from "../../components/Inputs/Input.component";
-import { toast } from "react-hot-toast";
-import { CSSTransition } from "react-transition-group";
 
 const SignUp = ({ setCurrentPage, closeModal }) => {
   const navigate = useNavigate();

@@ -1,14 +1,20 @@
 import { initializeApp } from "firebase/app";
 import {
-  getAuth,
-  signInWithEmailAndPassword,
   updateEmail as firebaseUpdateEmail,
   updatePassword as firebaseUpdatePassword,
+  getAuth,
   sendPasswordResetEmail,
+  signInWithEmailAndPassword,
   updateProfile,
 } from "firebase/auth";
+import {
+  doc,
+  getDoc,
+  getFirestore,
+  setDoc,
+  updateDoc,
+} from "firebase/firestore";
 import { getStorage } from "firebase/storage";
-import { getFirestore, doc, getDoc, updateDoc, setDoc } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_API_KEY,
@@ -28,7 +34,7 @@ export const db = getFirestore(app);
 export const createUserDocument = async (user) => {
   try {
     if (!user) throw new Error("No authenticated user found.");
-    
+
     const userRef = doc(db, "users", user.uid);
     await setDoc(userRef, {
       uid: user.uid,

@@ -1,5 +1,5 @@
-import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 import { testimonials } from "../utils/data";
 
 const useMediaQuery = (query) => {
@@ -74,7 +74,7 @@ const Testimonials = () => {
         {testimonials.map((card, index) => (
           <motion.div
             key={index}
-            className="bg-[#111111] p-5 md:p-6 rounded-2xl shadow shadow-[#000000]/60 hover:shadow-sm hover:shadow-accent transition-shadow duration-300 grid grid-cols-1 md:grid-cols-[auto_1fr] gap-4 items-center"
+            className="bg-card p-5 md:p-6 rounded-2xl shadow-md shadow-white/10 hover:shadow-sm hover:shadow-accent transition-shadow duration-300 grid grid-cols-1 md:grid-cols-[auto_1fr] gap-4 items-center"
             initial={isMediumOrLarger ? { opacity: 0, x: card.initialX } : {}}
             animate={isMediumOrLarger && inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: card.delay }}

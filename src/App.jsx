@@ -1,10 +1,10 @@
 import { Toaster } from "react-hot-toast";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home/Home.page";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Dashboard from "./pages/Dashboard/Dashboard.page";
 import Favourites from "./pages/Dashboard/Favourites.page";
 import Profile from "./pages/Dashboard/Profile.page";
 import MovieDetail from "./pages/Detail/MovieDetail.page";
+import Home from "./pages/Home/Home.page";
 
 const App = () => {
   return (

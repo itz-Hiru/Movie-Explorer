@@ -1,15 +1,15 @@
-import { useState, useEffect, useRef } from "react";
-import { motion } from "framer-motion";
-import { RiWhatsappFill } from "react-icons/ri";
-import { FaFacebook, FaInstagramSquare } from "react-icons/fa";
-import { ImLinkedin } from "react-icons/im";
-import { Link } from "react-router-dom";
-import { validateEmail } from "../utils/helper";
-import toast from "react-hot-toast";
-import Input from "../components/Inputs/Input.component";
-import { HiOutlineMail } from "react-icons/hi";
-import { FaBuilding, FaPhone } from "react-icons/fa6";
 import emailjs from "emailjs-com";
+import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import toast from "react-hot-toast";
+import { FaFacebook, FaInstagramSquare } from "react-icons/fa";
+import { FaBuilding, FaPhone } from "react-icons/fa6";
+import { HiOutlineMail } from "react-icons/hi";
+import { ImLinkedin } from "react-icons/im";
+import { RiWhatsappFill } from "react-icons/ri";
+import { Link } from "react-router-dom";
+import Input from "../components/Inputs/Input.component";
+import { validateEmail } from "../utils/helper";
 
 const useMediaQuery = (query) => {
   const [matches, setMatches] = useState(false);
@@ -103,7 +103,7 @@ const Contact = () => {
       className="relative min-h-[95vh] w-full flex flex-col-reverse md:flex-row justify-center items-stretch gap-10 py-24 md:py-28 px-5"
     >
       <motion.div
-        className="bg-[#1a1a1a] p-5 md:p-10 w-full md:w-1/3 rounded-2xl flex flex-col justify-between flex-grow"
+        className="bg-card p-5 md:p-10 w-full md:w-1/3 rounded-2xl flex flex-col justify-between flex-grow shadow-md shadow-white/10"
         initial={isMediumOrLarger ? { opacity: 0, x: -50 } : {}}
         animate={isMediumOrLarger && inView ? { opacity: 1, x: 0 } : {}}
         transition={{ duration: 1.9, ease: "easeOut" }}
@@ -160,7 +160,7 @@ const Contact = () => {
         </div>
       </motion.div>
       <motion.div
-        className="bg-[#1a1a1a] p-5 md:p-10 w-full md:w-1/2 rounded-2xl flex flex-col justify-between flex-grow"
+        className="bg-card p-5 md:p-10 w-full md:w-1/2 rounded-2xl flex flex-col justify-between flex-grow shadow-md shadow-white/10"
         initial={isMediumOrLarger ? { opacity: 0, x: 50 } : {}}
         animate={isMediumOrLarger && inView ? { opacity: 1, x: 0 } : {}}
         transition={{ duration: 1.9, ease: "easeOut" }}
