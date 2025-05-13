@@ -18,7 +18,7 @@
 }
 
 html.dark {
-  --color-black: "#FFFFFF";
+  --color-black: #FFFFFF;
   --color-white: #000000;
   --color-bg-black: #FAFAFA;
   --color-card: #EFEFEF;

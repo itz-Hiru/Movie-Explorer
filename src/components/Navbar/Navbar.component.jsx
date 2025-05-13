@@ -1,5 +1,5 @@
 import { onAuthStateChanged } from "firebase/auth";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { LuMoon, LuSun } from "react-icons/lu";
 import { navLinks } from "../../utils/data";
 import { auth } from "../../utils/firebase";
@@ -16,6 +16,7 @@ const Navbar = ({ onClick }) => {
         ? "dark"
         : "light")
   );
+  const menuRef = useRef();
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -26,12 +27,21 @@ const Navbar = ({ onClick }) => {
       setIsScrolled(window.scrollY > 10);
     };
 
+    const handleOutsideClick = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setIsMenuOpen(false);
+      }
+    };
+
     window.addEventListener("scroll", handleScroll);
+    document.addEventListener("mousedown", handleOutsideClick);
     document.documentElement.classList.toggle("dark", theme === "dark");
     localStorage.setItem("theme", theme);
+
     return () => {
       unsubscribe();
       window.removeEventListener("scroll", handleScroll);
+      document.removeEventListener("mousedown", handleOutsideClick);
     };
   }, [theme]);
 
@@ -100,7 +110,7 @@ const Navbar = ({ onClick }) => {
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           className="h-6 w-6 cursor-pointer"
           fill="none"
-          stroke="#FFF"
+          stroke="#FA5500"
           strokeWidth="2"
           viewBox="0 0 24 24"
         >
@@ -111,6 +121,7 @@ const Navbar = ({ onClick }) => {
       </div>
 
       <div
+        ref={menuRef}
         className={`fixed top-0 left-0 w-3/4 h-screen bg-card text-base flex flex-col md:hidden items-center justify-center gap-6 font-medium text-white transition-all duration-500 ${
           isMenuOpen ? "translate-x-0" : "-translate-x-full"
         }`}
