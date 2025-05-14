@@ -47,6 +47,12 @@ Welcome to the **Movie Explorer App**! This project is a sleek, feature-rich mov
 
 [![Live Demo](https://img.shields.io/badge/Live_Demo-%2300bcd4?style=for-the-badge&logo=vercel&logoColor=white)](https://movie-explorer-loons-lab.vercel.app)
 
+---
+
+## 🎨 Figma Design
+
+[![Figma Design](https://img.shields.io/badge/Figma_Design-%2300e7b0?style=for-the-badge&logo=figma&logoColor=white)](https://www.figma.com/design/WoUBFaujIByFu0cxSJNCaE/Movie-Explorer-Web-UI?node-id=0-1&t=ti2kpvr3yx1ybGre-1)
+
 
 ---
 
